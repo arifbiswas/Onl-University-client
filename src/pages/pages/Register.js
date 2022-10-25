@@ -2,6 +2,17 @@ import React from "react";
 import { NavLink } from "react-router-dom";
 
 const Register = () => {
+
+  const handleCreateUserWithEmail =e=>{
+    e.preventDefault();
+    const form = e.target ;
+    const name = form.name.value;
+    const photoURL = form.photoURL.value;
+    const email = form.email.value;
+    const password = form.password.value;
+    console.log(name,photoURL,email,password);
+  }
+
   return (
     <div className="w-96 mx-auto border border-gray-300 py-4 px-5 rounded-lg">
       <h2 className="text-3xl text-center text-rose-900 my-4 font-black">
@@ -9,16 +20,17 @@ const Register = () => {
       </h2>
      
 
-      <form>
+      <form onSubmit={handleCreateUserWithEmail}>
         <div className="mb-6">
           <label
-            for="name"
+            htmlFor="name"
             className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300"
           >
             Name
           </label>
           <input
             type="name"
+            name="name"
             id="name"
             className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-rose-500 focus:border-rose-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-rose-500 dark:focus:border-rose-500"
             placeholder="name"
@@ -27,13 +39,14 @@ const Register = () => {
         </div>
         <div className="mb-6">
           <label
-            for="photoURL"
+            htmlFor="photoURL"
             className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300"
           >
             PhotoURL
           </label>
           <input
             type="photoURL"
+            name="photoURL"
             id="photoURL"
             className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-rose-500 focus:border-rose-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-rose-500 dark:focus:border-rose-500"
             placeholder="photoURL"
@@ -42,13 +55,14 @@ const Register = () => {
         </div>
         <div className="mb-6">
           <label
-            for="email"
+            htmlFor="email"
             className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300"
           >
             Email
           </label>
           <input
             type="email"
+            name="email"
             id="email"
             className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-rose-500 focus:border-rose-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-rose-500 dark:focus:border-rose-500"
             placeholder="email"
@@ -57,13 +71,14 @@ const Register = () => {
         </div>
         <div className="mb-6">
           <label
-            for="password"
+            htmlFor="password"
             className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300"
           >
             Password
           </label>
           <input
             type="password"
+            name="password"
             id="password"
             placeholder="password"
             className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-rose-500 focus:border-rose-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-rose-500 dark:focus:border-rose-500"

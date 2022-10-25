@@ -1,21 +1,55 @@
+import { GithubAuthProvider, GoogleAuthProvider } from "firebase/auth";
 import React from "react";
+import { useContext } from "react";
 import { FaGithub, FaGoogle } from "react-icons/fa";
 import { NavLink } from "react-router-dom";
+import { AuthProvider } from "../../Contexts/AuthContext";
+
 
 const Login = () => {
+  const googleProvider = new GoogleAuthProvider();
+  const gitHubProvider = new GithubAuthProvider();
+
+  const { createUserWithGoogle, createUserWithGitHub } =
+    useContext(AuthProvider);
+
+  const handleGoogleLogin = () => {
+    createUserWithGoogle(googleProvider)
+      .then((result) => {
+        const user = result.user;
+        console.log(user);
+      })
+      .catch((error) => console.error(error));
+  };
+
+  const handleGitHubLogin = () => {
+    createUserWithGitHub(gitHubProvider)
+      .then((result) => {
+        const user = result.user;
+        console.log(user);
+      })
+      .catch((e) => console.error(e));
+  };
+
   return (
     <div className="w-96 mx-auto border border-gray-300 py-4 px-5 rounded-lg">
       <h2 className="text-3xl text-center text-rose-900 my-4 font-black">
         Login
       </h2>
       <hr className="border border-zinc-300 " />
-      <button className="my-3 btn border w-full rounded-lg py-3 flex bg-rose-800 justify-center">
+      <button
+        onClick={handleGoogleLogin}
+        className="my-3 btn border w-full rounded-lg py-3 flex bg-rose-800 justify-center"
+      >
         <span className="text-2xl mr-2 text-white">
           <FaGoogle></FaGoogle>
         </span>
         <span className="text-white font-bold">Login with Google</span>
       </button>
-      <button className="my-3 btn border w-full rounded-lg py-3 flex bg-black justify-center">
+      <button
+        onClick={handleGitHubLogin}
+        className="my-3 btn border w-full rounded-lg py-3 flex bg-black justify-center"
+      >
         <span className="text-2xl mr-2 text-white">
           <FaGithub></FaGithub>
         </span>
@@ -26,7 +60,7 @@ const Login = () => {
       <form>
         <div className="mb-6">
           <label
-            for="email"
+            htmlFor="email"
             className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300"
           >
             Email
@@ -41,7 +75,7 @@ const Login = () => {
         </div>
         <div className="mb-6">
           <label
-            for="password"
+            htmlFor="password"
             className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300"
           >
             Password
@@ -64,7 +98,9 @@ const Login = () => {
       <div className="flex flex-col items-center mt-5">
         <p className="mt-1 text-xs font-light text-gray-500">
           New visit this site?
-          <NavLink to='/register' className="ml-1 font-medium text-rose-400">Register now</NavLink>
+          <NavLink to="/register" className="ml-1 font-medium text-rose-400">
+            Register now
+          </NavLink>
         </p>
       </div>
     </div>
