@@ -13,7 +13,7 @@ const Courses = () => {
         <SiteBar></SiteBar>
       </span>
       <span className="w-full">
-        <Outlet></Outlet>
+        <Outlet/>
       </span>
     </div>
   );

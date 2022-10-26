@@ -1,132 +1,206 @@
 import React from "react";
+import { useState } from "react";
+import { useContext } from "react";
+
+import { Link, Navigate, NavLink, useLoaderData, useNavigate } from "react-router-dom";
+import { AuthProvider } from "../../Contexts/AuthContext";
+
 
 const Admission = () => {
+  const navigate = useNavigate();
+  const [disable,setdisable] = useState(true)
+  const {user} = useContext(AuthProvider)
+  const course = useLoaderData();
+  console.log(course);
+  const { name, courses_length ,courses_id} =
+    course;
+    
+    const admissionFrom = (e)=>{
+      e.preventDefault();
+      const form = e.target;
+      const name = form.name.value;
+      const preCollage = form.preCollage.value;
+      const number = form.number.value;
+      const ssc = form.ssc.value;
+      const hsc = form.hsc.value;
+      const email = form.email.value;
+      const bkash = form.bkash.value;
+      // console.log(name,preCollage,number,ssc,hsc,email);
+      const admissionInfo = {name,preCollage,number,ssc,hsc,email,bkash}
+      const admissionInfoJson =JSON.stringify(admissionInfo);
+      localStorage.setItem('fromInfo',admissionInfoJson)
+      navigate(`/pdf/${courses_id}`)
+    }
+
+    // const handlNavigate =()=>{
+    //   return <Navigate to='/lol'></Navigate>
+    // }
+
   return (
-    <div className="container mx-auto">
-      <form>
-        <div class="relative z-0 mb-6 w-full group">
-          <input
-            type="email"
-            name="floating_email"
-            id="floating_email"
-            class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
-            placeholder=" "
-            required
-          />
-          <label
-            for="floating_email"
-            class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
-          >
-            Email address
-          </label>
-        </div>
-        <div class="relative z-0 mb-6 w-full group">
-          <input
-            type="password"
-            name="floating_password"
-            id="floating_password"
-            class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
-            placeholder=" "
-            required=""
-          />
-          <label
-            for="floating_password"
-            class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
-          >
-            Password
-          </label>
-        </div>
-        <div class="relative z-0 mb-6 w-full group">
-          <input
-            type="password"
-            name="repeat_password"
-            id="floating_repeat_password"
-            class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
-            placeholder=" "
-            required=""
-          />
-          <label
-            for="floating_repeat_password"
-            class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
-          >
-            Confirm password
-          </label>
-        </div>
-        <div class="grid md:grid-cols-2 md:gap-6">
-          <div class="relative z-0 mb-6 w-full group">
+    <div className="container mx-auto mb-8" >
+     <div className="text-center my-2">
+     <h1 className="text-1xl lg:text-3xl font-black text-rose-500">ADMISSION OF {name.toUpperCase()}</h1>
+      <h2 className="text-[18px] lg:text-3xl mb-0 font-extralight "> OnL University From Bangladesh</h2>
+      <h2 className="text-[10px] lg:text-[20px]  mb-10 font-semibold text-rose-400">COURSE FOR {courses_length.toUpperCase()}</h2>
+     </div>
+      <form 
+      onSubmit={admissionFrom}
+      className="w-[80%] lg:w-[60%] mx-auto"> 
+        <div className="grid gap-6 mb-6 md:grid-cols-1 ">
+          <div>
+            <label
+              for="first_name"
+              className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300"
+            >
+              Full Name
+            </label>
+            <input
+            
+              type="text"
+              id="first_name"
+              name="name"
+              className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-rose-500 focus:border-rose-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-rose-500 dark:focus:border-rose-500 "
+              placeholder="first name"
+              value={user?.displayName}
+              required
+            />
+          </div>
+          
+          <div>
+            <label
+              for="company"
+              className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300"
+            >
+              Previous Collage 
+            </label>
             <input
               type="text"
-              name="floating_first_name"
-              id="floating_first_name"
-              class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
-              placeholder=" "
-              required=""
+              id="company"
+              name="preCollage"
+              className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-rose-500 focus:border-rose-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-rose-500 dark:focus:border-rose-500"
+              placeholder="name"
+              required
             />
-            <label
-              for="floating_first_name"
-              class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
-            >
-              First name
-            </label>
           </div>
-          <div class="relative z-0 mb-6 w-full group">
-            <input
-              type="text"
-              name="floating_last_name"
-              id="floating_last_name"
-              class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
-              placeholder=" "
-              required=""
-            />
+          <div>
             <label
-              for="floating_last_name"
-              class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
+              for="phone"
+              className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300"
             >
-              Last name
+              Phone number
             </label>
-          </div>
-        </div>
-        <div class="grid md:grid-cols-2 md:gap-6">
-          <div class="relative z-0 mb-6 w-full group">
             <input
               type="tel"
-              pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"
-              name="floating_phone"
-              id="floating_phone"
-              class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
-              placeholder=" "
-              required=""
+              id="phone"
+              name="number"
+              className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-rose-500 focus:border-rose-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-rose-500 dark:focus:border-rose-500"
+              placeholder="'01871063074'"
+              
+              required
             />
-            <label
-              for="floating_phone"
-              class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
-            >
-              Phone number (123-456-7890)
-            </label>
           </div>
-          <div class="relative z-0 mb-6 w-full group">
+          <div>
+            <label
+              for="ssc"
+              className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300"
+            >
+              SSC GPA
+            </label>
+            <input
+              type="number"
+              id="ssc"
+              name="ssc"
+              className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-rose-500 focus:border-rose-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-rose-500 dark:focus:border-rose-500"
+              placeholder="5.00 GPA"
+              required
+            />
+          </div>
+          <div>
+            <label
+              for="hsc"
+              className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300"
+            >
+              HSC GPA
+            </label>
+            <input
+              type="number"
+              id="hsc"
+              name="hsc"
+              className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-rose-500 focus:border-rose-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-rose-500 dark:focus:border-rose-500"
+              placeholder="5.00 GPA"
+              required
+            />
+          </div>
+          <div>
+            <label
+              for="visitors"
+              className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300"
+            >
+              Bkash Transaction Id 
+            </label>
             <input
               type="text"
-              name="floating_company"
-              id="floating_company"
-              class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
-              placeholder=" "
-              required=""
+              id="visitors"
+              name="bkash"
+              className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-rose-500 focus:border-rose-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-rose-500 dark:focus:border-rose-500"
+              placeholder="Teo51asd875asd85"
+              required
             />
-            <label
-              for="floating_company"
-              class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
-            >
-              Company (Ex. Google)
-            </label>
           </div>
         </div>
-        <button
+        <div className="mb-6">
+          <label
+            for="email"
+            className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300"
+          >
+            Email 
+          </label>
+          <input
+            type="email"
+            id="email"
+            name="email"
+            className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-rose-500 focus:border-rose-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-rose-500 dark:focus:border-rose-500"
+            placeholder="email"
+            value={user?.email}
+            required
+          />
+        </div>
+        
+        <div className="flex items-start mb-6">
+          <div className="flex items-center h-5">
+            <input
+              id="remember"
+              type="checkbox"
+              value=""
+              className="w-4 h-4 bg-gray-50 rounded border border-gray-300 focus:ring-3 focus:ring-rose-300 dark:bg-gray-700 dark:border-gray-600 dark:focus:ring-rose-600 dark:ring-offset-gray-800"
+              required
+            />
+          </div>
+          <label
+          onClick={()=>setdisable(!disable)}
+            for="remember"
+            className="ml-2 text-sm font-medium text-gray-900 dark:text-gray-400"
+          >
+            I agree with the{" "}
+            <a
+              
+              className="text-rose-600 hover:underline dark:text-rose-500"
+            >
+              terms and conditions
+            </a>
+            .
+          </label>
+        </div>
+       
+       <button
+          // onClick={handlNavigate}
           type="submit"
-          class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+          className="text-white bg-rose-700 hover:bg-rose-800  font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center "
+          disabled={disable}
         >
-          Submit
+          Form Submit
         </button>
+       
       </form>
     </div>
   );

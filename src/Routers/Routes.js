@@ -5,6 +5,7 @@ import Blog from "../pages/pages/Blog";
 import Course from "../pages/pages/Course";
 import CourseInfo from "../pages/pages/CourseInfo";
 import Courses from "../pages/pages/Courses";
+import DownloadPDF from "../pages/pages/DownloadPDF";
 import FAQ from "../pages/pages/FAQ";
 import Home from "../pages/pages/Home";
 import Login from "../pages/pages/Login";
@@ -59,10 +60,17 @@ const routes = createBrowserRouter([
                 element:<FAQ></FAQ>
             },
             {
-                path:'/admission',
-                element:<Admission></Admission>
+                path:'/admission/:id',
+                element:<Admission></Admission>,
+                loader: ({params})=>fetch(`https://assignment-10-app-server-arifbiswas.vercel.app/courses/${params.id}`)
             },
+           
         ]
+    },
+    {
+        path:'/pdf/:id',
+        element:<DownloadPDF></DownloadPDF>,
+        loader: ({params})=>fetch(`https://assignment-10-app-server-arifbiswas.vercel.app/courses/${params.id}`)
     }
 ])
 

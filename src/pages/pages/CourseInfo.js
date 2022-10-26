@@ -26,7 +26,7 @@ const CourseInfo = () => {
           Total Exam: {total_exam}.
           </h2>
           <NavLink 
-            to='/admission'
+            to={`/admission/${courses_id}`}
             className="inline-flex shadow-lg items-center py-5 px-5 my-2 text-sm font-medium text-center text-white bg-rose-700 rounded-lg hover:bg-rose-800 focus:ring-4 focus:outline-none focus:ring-rose-300 dark:bg-rose-600 dark:hover:bg-rose-700 dark:focus:ring-rose-800"
           >
            ONLINE ADMISSION APPLICATION FORM
