@@ -109,40 +109,7 @@ const Header = () => {
                     Blog
                   </NavLink>
                 </li>
-                <li>
-                  <div className="block py-2 pr-4 pl-3 text-gray-500 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-rose-500 md:p-0 dark:text-gray-400 md:dark:hover:text-white dark:hover:bg-gray-500 dark:hover:text-white md:dark:hover:bg-transparent">
-                    {user?.uid ? (
-                      <>
-                      <Tooltip content={user?.displayName} placement="bottom">
-                      <img
-                          variant="gradient"
-                          class="p-1 w-8 h-8 rounded-full ring-2 ring-gray-300 dark:ring-gray-500"
-                          src={user?.photoURL}
-                          alt="profile"
-                        />
-                      </Tooltip>
-                       
-                      </>
-                    ) : (
-                      <>
-                        <div class="overflow-hidden relative w-10 h-10 bg-gray-100 rounded-full dark:bg-gray-600">
-                          <svg
-                            class="absolute -left-1 w-8 h-8 text-gray-400"
-                            fill="currentColor"
-                            viewBox="0 0 20 20"
-                            xmlns="http://www.w3.org/2000/svg"
-                          >
-                            <path
-                              fill-rule="evenodd"
-                              d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z"
-                              clip-rule="evenodd"
-                            ></path>
-                          </svg>
-                        </div>
-                      </>
-                    )}
-                  </div>
-                </li>
+                
                 {user?.uid ? (
                   <li>
                    
@@ -178,6 +145,42 @@ const Header = () => {
                     </li>
                   </>
                 )}
+                <li>
+                  <div className="block py-2 pr-4 pl-3 text-gray-500 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-rose-500 md:p-0 dark:text-gray-400 md:dark:hover:text-white dark:hover:bg-gray-500 dark:hover:text-white md:dark:hover:bg-transparent">
+                    {user?.uid ? (
+                      <>
+                      <Tooltip content={user?.displayName ?user.displayName :'No Login'} placement="bottom">
+                      <img
+                          variant="gradient"
+                          className="p-1 w-8 h-8 rounded-full ring-2 ring-gray-300 dark:ring-gray-500"
+                          src={user?.photoURL}
+                          alt="profile"
+                        />
+                      </Tooltip>
+                       
+                      </>
+                    ) : (
+                      <>
+                      <Tooltip content={user?.displayName ?user.displayName :'No Login'} placement="bottom">
+                        <div className="overflow-hidden relative w-10 h-10 bg-gray-100 rounded-full dark:bg-gray-600">
+                          <svg
+                            className="absolute -left-1 w-6 h-6 text-gray-400"
+                            fill="currentColor"
+                            viewBox="0 0 20 20"
+                            xmlns="http://www.w3.org/2000/svg"
+                          >
+                            <path
+                              fill-rule="evenodd"
+                              d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z"
+                              clip-rule="evenodd"
+                            ></path>
+                          </svg>
+                        </div>
+                        </Tooltip>
+                      </>
+                    )}
+                  </div>
+                </li>
 
                 <li>
                   <label

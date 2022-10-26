@@ -1,7 +1,10 @@
 import React from "react";
+import { useContext } from "react";
 import { NavLink } from "react-router-dom";
+import { AuthProvider } from "../../Contexts/AuthContext";
 
 const Register = () => {
+  const {createUserWithGmailPassword,userProfileUpdate} = useContext(AuthProvider);
 
   const handleCreateUserWithEmail =e=>{
     e.preventDefault();
@@ -10,7 +13,25 @@ const Register = () => {
     const photoURL = form.photoURL.value;
     const email = form.email.value;
     const password = form.password.value;
-    console.log(name,photoURL,email,password);
+    // console.log(name,photoURL,email,password);
+    createUserWithGmailPassword(email,password)
+    .then(r =>{
+      const user = r.user;
+      console.log(user);
+      form.reset();
+      handleUserProfileUpdate(name,photoURL)
+    })
+    .catch(e =>console.error(e))
+  }
+
+  const handleUserProfileUpdate =(name,photoURL)=>{
+    const userUpdate = {
+      displayName : name,
+      photoURL: photoURL,
+    }
+    userProfileUpdate(userUpdate)
+    .then(()=>{})
+    .catch(e=>console.error(e))
   }
 
   return (
@@ -34,6 +55,7 @@ const Register = () => {
             id="name"
             className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-rose-500 focus:border-rose-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-rose-500 dark:focus:border-rose-500"
             placeholder="name"
+            required
             
           />
         </div>
@@ -50,6 +72,7 @@ const Register = () => {
             id="photoURL"
             className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-rose-500 focus:border-rose-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-rose-500 dark:focus:border-rose-500"
             placeholder="photoURL"
+            required
             
           />
         </div>

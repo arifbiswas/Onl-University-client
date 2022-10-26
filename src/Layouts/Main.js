@@ -1,6 +1,7 @@
 import React from 'react';
 import { Outlet } from 'react-router-dom';
 import Header from '../pages/shearedPages/Header';
+import SiteBar from '../pages/shearedPages/SiteBar';
 
 const Main = () => {
     return (

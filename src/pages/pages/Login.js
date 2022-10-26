@@ -10,7 +10,7 @@ const Login = () => {
   const googleProvider = new GoogleAuthProvider();
   const gitHubProvider = new GithubAuthProvider();
 
-  const { createUserWithGoogle, createUserWithGitHub } =
+  const { createUserWithGoogle, createUserWithGitHub ,loginUser} =
     useContext(AuthProvider);
 
   const handleGoogleLogin = () => {
@@ -30,6 +30,21 @@ const Login = () => {
       })
       .catch((e) => console.error(e));
   };
+
+  const handleLoginWithGmailPassword = e =>{
+    e.preventDefault();
+    const form = e.target;
+    const email = form.email.value;
+    const password = form.password.value;
+    // console.log(email,password);
+    loginUser(email,password)
+    .then(result =>{
+      const user = result.user;
+      console.log(user);
+      form.reset();
+    })
+    .catch(e=>console.error(e))
+  }
 
   return (
     <div className="w-96 mx-auto border border-gray-300 py-4 px-5 rounded-lg">
@@ -57,7 +72,7 @@ const Login = () => {
       </button>
       <hr className="border border-zinc-300 mb-5" />
 
-      <form>
+      <form onSubmit={handleLoginWithGmailPassword}>
         <div className="mb-6">
           <label
             htmlFor="email"
@@ -68,9 +83,10 @@ const Login = () => {
           <input
             type="email"
             id="email"
+            name="email"
             className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-rose-500 focus:border-rose-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-rose-500 dark:focus:border-rose-500"
             placeholder="email"
-            required=""
+            required
           />
         </div>
         <div className="mb-6">
@@ -83,9 +99,10 @@ const Login = () => {
           <input
             type="password"
             id="password"
+            name="password"
             placeholder="password"
             className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-rose-500 focus:border-rose-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-rose-500 dark:focus:border-rose-500"
-            required=""
+            required
           />
         </div>
         <button
