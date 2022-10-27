@@ -1,11 +1,12 @@
 import React from 'react';
 import { useContext } from 'react';
-import { useLoaderData } from 'react-router-dom';
+import { useLoaderData, useNavigate } from 'react-router-dom';
 import { AuthProvider } from '../../Contexts/AuthContext';
 
 const DownloadPDF = () => {
+    
     const course = useLoaderData();
-    console.log(course);
+  
     const { name, courses_length ,courses_id} =
       course;
     const {user} = useContext(AuthProvider);
@@ -13,6 +14,12 @@ const DownloadPDF = () => {
     const pdf = () =>{
         window.print()
     }
+
+    // localStorage
+    const fromInfo = localStorage.getItem('fromInfo');
+    const fromInfoParse =JSON.parse(fromInfo) 
+    
+    const {bkash,hsc,number,preCollage,ssc} = fromInfoParse;
 
     return (
         <div>
@@ -58,6 +65,7 @@ const DownloadPDF = () => {
               name="preCollage"
               className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-rose-500 focus:border-rose-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-rose-500 dark:focus:border-rose-500 border-none"
               placeholder="name"
+              value={preCollage}
               disabled
             />
           </div>
@@ -74,7 +82,7 @@ const DownloadPDF = () => {
               name="number"
               className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-rose-500 focus:border-rose-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-rose-500 dark:focus:border-rose-500 border-none"
               placeholder="'01871063074'"
-              
+              value={number}
               disabled
             />
           </div>
@@ -91,6 +99,7 @@ const DownloadPDF = () => {
               name="ssc"
               className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-rose-500 focus:border-rose-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-rose-500 dark:focus:border-rose-500 border-none"
               placeholder="5.00 GPA"
+              value={ssc}
               disabled
             />
           </div>
@@ -107,6 +116,7 @@ const DownloadPDF = () => {
               name="hsc"
               className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-rose-500 focus:border-rose-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-rose-500 dark:focus:border-rose-500 border-none"
               placeholder="5.00 GPA"
+              value={hsc}
               disabled
             />
           </div>
@@ -123,6 +133,7 @@ const DownloadPDF = () => {
               name="bkash"
               className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-rose-500 focus:border-rose-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-rose-500 dark:focus:border-rose-500 border-none"
               placeholder="Teo51asd875asd85"
+              value={bkash}
               disabled
             />
           </div>

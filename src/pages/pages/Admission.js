@@ -11,7 +11,7 @@ const Admission = () => {
   const [disable,setdisable] = useState(true)
   const {user} = useContext(AuthProvider)
   const course = useLoaderData();
-  console.log(course);
+ 
   const { name, courses_length ,courses_id} =
     course;
     
@@ -25,7 +25,7 @@ const Admission = () => {
       const hsc = form.hsc.value;
       const email = form.email.value;
       const bkash = form.bkash.value;
-      // console.log(name,preCollage,number,ssc,hsc,email);
+      
       const admissionInfo = {name,preCollage,number,ssc,hsc,email,bkash}
       const admissionInfoJson =JSON.stringify(admissionInfo);
       localStorage.setItem('fromInfo',admissionInfoJson)

@@ -10,27 +10,32 @@ export const AuthProvider = createContext();
 
 const AuthContext = ({children}) => {
     const [user,setUser] = useState();
-    const[success ,setSuccess] = useState();
-    const [error , setError] = useState();
+    const [loader ,setLoader] = useState(true)
 
     
     const createUserWithGoogle = (provider) =>{
+        setLoader(true)
         return signInWithPopup(auth,provider)
     }
 
     const createUserWithGitHub =(provider)=>{
+        setLoader(true)
         return signInWithPopup(auth,provider)
     }
 
     const createUserWithGmailPassword = (email,password)=>{
-      return createUserWithEmailAndPassword(auth,email,password) 
+        setLoader(true)
+      return createUserWithEmailAndPassword(auth,email,password)
+       
     }
 
     const userProfileUpdate = (updateInfo) => {
+        setLoader(true)
         return updateProfile(auth.currentUser,updateInfo)
     }
 
     const loginUser =(email,password)=>{
+        setLoader(true)
         return signInWithEmailAndPassword(auth,email,password)
     }
 
@@ -38,7 +43,8 @@ const AuthContext = ({children}) => {
         const unsubscribe =()=>{
             onAuthStateChanged(auth,currentUser=>{
                 setUser(currentUser);
-                console.log('user change on ',currentUser);
+                setLoader(false);
+               
             })
         }
         return ()=>{
@@ -55,13 +61,10 @@ const AuthContext = ({children}) => {
         createUserWithGoogle,
         createUserWithGitHub,
         LogOut,
-        success ,
-        setSuccess,
-        error ,
-        setError,
         createUserWithGmailPassword,
         userProfileUpdate,
-        loginUser
+        loginUser,
+        loader
     }
     return (
         <AuthProvider.Provider value={userInfo}>

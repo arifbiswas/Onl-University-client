@@ -3,7 +3,7 @@ import { NavLink, useLoaderData } from "react-router-dom";
 
 const Course = () => {
   const course = useLoaderData();
-  console.log(course);
+ 
   const { courses_id,name, image, description, courses_length, total_exam } = course;
   return (
     <div>
@@ -26,9 +26,29 @@ const Course = () => {
           </p>
           <NavLink
             to={`/course/${courses_id}`}
-            className="inline-flex items-center py-2 px-3 text-sm font-medium text-center text-white bg-rose-700 rounded-lg hover:bg-rose-800 focus:ring-4 focus:outline-none focus:ring-rose-300 dark:bg-rose-600 dark:hover:bg-rose-700 dark:focus:ring-rose-800"
+            className="inline-flex justify-center shadow-lg w-full items-center py-5 px-5 my-2 text-1xl font-medium text-center text-white bg-rose-700 rounded-lg hover:bg-rose-800 focus:ring-4 focus:outline-none focus:ring-rose-300 dark:bg-rose-600 dark:hover:bg-rose-700 dark:focus:ring-rose-800 lg:mr-5"
+         
           >
             More Info
+            <svg
+              aria-hidden="true"
+              className="ml-2 -mr-1 w-4 h-4"
+              fill="currentColor"
+              viewBox="0 0 20 20"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                fill-rule="evenodd"
+                d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z"
+                clip-rule="evenodd"
+              ></path>
+            </svg>
+          </NavLink>
+          <NavLink 
+            to={`/admission/${courses_id}`}
+            className="inline-flex justify-center shadow-lg w-full items-center py-5 px-5 my-2 text-1xl font-medium text-center text-white bg-rose-700 rounded-lg hover:bg-rose-800 focus:ring-4 focus:outline-none focus:ring-rose-300 dark:bg-rose-600 dark:hover:bg-rose-700 dark:focus:ring-rose-800 lg:mr-5"
+          >
+            APPLICATION FORM
             <svg
               aria-hidden="true"
               className="ml-2 -mr-1 w-4 h-4"

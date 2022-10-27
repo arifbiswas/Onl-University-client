@@ -11,7 +11,7 @@ const SiteBar = () => {
         .then(data => setCourses(data))
     } ,[])
   return (
-    <div>
+    <div className="flex justify-center items-center"> 
       {/* <h1>Arif Biswas</h1> */}
       <aside className="w-64 border" aria-label="Sidebar">
         <div className="overflow-y-auto py-4 px-3 bg-gray-50 rounded dark:bg-gray-800">
@@ -24,8 +24,8 @@ const SiteBar = () => {
                     courses.map(c => <li className="text-center pb-2 border"><NavLink 
                     className={({ isActive }) =>
                       isActive
-                        ? "block py-2 pr-4 pl-3 text-white bg-rose-500  rounded md:bg-transparent md:text-rose-500 md:p-0 dark:text-white  border-2  border-b-rose-600"
-                        : "block py-2 pr-4 pl-3 text-gray-500 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-rose-500 md:p-0 dark:text-gray-400 md:dark:hover:text-white dark:hover:bg-gray-500  dark:hover:text-white md:dark:hover:bg-transparent "
+                        ? "block py-2  pr-4 pl-3 text-white bg-rose-500  rounded-lg md:bg-transparent md:text-rose-500  dark:text-white  border-2  border-b-rose-600 "
+                        : "block py-2  pr-4 pl-3 text-gray-500 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-rose-500 dark:text-gray-400 md:dark:hover:text-white dark:hover:bg-gray-500  dark:hover:text-white md:dark:hover:bg-transparent "
                     }
                     
                     to={`/courses/${c.courses_id}`}>{c.name}</NavLink></li>)

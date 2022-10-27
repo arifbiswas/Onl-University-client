@@ -3,13 +3,13 @@ import { NavLink, useLoaderData } from "react-router-dom";
 
 const CourseInfo = () => {
   const course = useLoaderData();
-  console.log(course);
+ 
   const { courses_id, name, image, description, courses_length, total_exam } =
     course;
   return (
     <div>
       <div className=" bg-white rounded-lg border border-gray-200 shadow-md dark:bg-gray-800 dark:border-gray-700">
-        <img className="rounded-lg w-[100%] h-[70vh]" src={image} alt="" />
+        <img className="rounded-lg w-[100%] h-[30vh] lg:w-[100%] lg:h-[70vh]" src={image} alt="" />
 
         <div className="p-5">
           <h5 className="mb-5 text-4xl font-bold tracking-tight text-gray-900 dark:text-white">

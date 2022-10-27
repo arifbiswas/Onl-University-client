@@ -1,10 +1,12 @@
-import React from "react";
+import React, { useState } from "react";
 import { useContext } from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import { AuthProvider } from "../../Contexts/AuthContext";
 
 const Register = () => {
   const {createUserWithGmailPassword,userProfileUpdate} = useContext(AuthProvider);
+  const [error,setError] = useState('');
+  const navigate = useNavigate()
 
   const handleCreateUserWithEmail =e=>{
     e.preventDefault();
@@ -13,15 +15,44 @@ const Register = () => {
     const photoURL = form.photoURL.value;
     const email = form.email.value;
     const password = form.password.value;
-    // console.log(name,photoURL,email,password);
+  
+    if(!/(?=.*?[0-9])/.test(password)){
+    
+      setError('should contain at least one digit')
+      return
+    }
+    if(!/(?=.*?[!@#\$&*~])/.test(password)){
+      
+      setError('should contain at least one Special character')
+      return
+    }
+    if(!/.{8,}/.test(password)){
+      
+      setError('Must be at least 8 characters in length ')
+      return
+    }
+    if(!/(?=.*[a-z])/.test(password)){
+     
+      setError('should contain at least one lower case')
+      return
+    }
+    if(!/(?=.*[A-Z])/.test(password)){
+      
+      setError('should contain at least one upper case')
+      return
+    }
     createUserWithGmailPassword(email,password)
     .then(r =>{
       const user = r.user;
-      console.log(user);
+     
       form.reset();
       handleUserProfileUpdate(name,photoURL)
+      setError('')
+      navigate('/')
     })
-    .catch(e =>console.error(e))
+    .catch(e =>{console.error(e)
+      setError(e.message)
+    })
   }
 
   const handleUserProfileUpdate =(name,photoURL)=>{
@@ -31,7 +62,9 @@ const Register = () => {
     }
     userProfileUpdate(userUpdate)
     .then(()=>{})
-    .catch(e=>console.error(e))
+    .catch(e=>{console.error(e)
+      setError(e.message)
+    })
   }
 
   return (
@@ -114,6 +147,7 @@ const Register = () => {
         >
           Register
         </button>
+        <p className="p-3 text-red-600 text-center ">{error}</p>
       </form>
       <div className="flex flex-col items-center mt-5">
         <p className="mt-1 text-xs font-light text-gray-500">

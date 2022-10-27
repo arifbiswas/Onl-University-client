@@ -1,14 +1,14 @@
 import { Sidebar } from "flowbite-react";
 import React from "react";
 import { Outlet, useLoaderData } from "react-router-dom";
-import SiteBar from "../shearedPages/SiteBar";
+import SiteBar from "../pages/shearedPages/SiteBar";
 
 const Courses = () => {
   const courses = useLoaderData();
-  // console.log(courses);
+ 
 
   return (
-    <div className="container lg:flex gap-5 mx-auto">
+    <div className="container lg:flex lg:gap-5 justify-center items-center mx-auto">
       <span>
         <SiteBar></SiteBar>
       </span>

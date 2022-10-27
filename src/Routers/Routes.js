@@ -1,16 +1,18 @@
 import { createBrowserRouter } from "react-router-dom";
 import Main from "../Layouts/Main";
 import Admission from "../pages/pages/Admission";
+
 import Blog from "../pages/pages/Blog";
 import Course from "../pages/pages/Course";
 import CourseInfo from "../pages/pages/CourseInfo";
-import Courses from "../pages/pages/Courses";
+import Courses from "../Layouts/Courses";
 import DownloadPDF from "../pages/pages/DownloadPDF";
 import FAQ from "../pages/pages/FAQ";
 import Home from "../pages/pages/Home";
 import Login from "../pages/pages/Login";
 import Register from "../pages/pages/Register";
 import ErrorPage from "../pages/shearedPages/ErrorPage";
+import PrivateRoute from "./PrivateRoute";
 
 const routes = createBrowserRouter([ 
     {
@@ -48,7 +50,7 @@ const routes = createBrowserRouter([
             },
             {
                 path:'/course/:id',
-                element:<CourseInfo></CourseInfo>,
+                element:<PrivateRoute><CourseInfo></CourseInfo></PrivateRoute>,
                 loader: ({params})=>fetch(`https://assignment-10-app-server-arifbiswas.vercel.app/courses/${params.id}`)
             },
             {
@@ -61,7 +63,7 @@ const routes = createBrowserRouter([
             },
             {
                 path:'/admission/:id',
-                element:<Admission></Admission>,
+                element:<PrivateRoute><Admission></Admission></PrivateRoute>,
                 loader: ({params})=>fetch(`https://assignment-10-app-server-arifbiswas.vercel.app/courses/${params.id}`)
             },
            
@@ -69,7 +71,7 @@ const routes = createBrowserRouter([
     },
     {
         path:'/pdf/:id',
-        element:<DownloadPDF></DownloadPDF>,
+        element:<PrivateRoute><DownloadPDF></DownloadPDF></PrivateRoute>,
         loader: ({params})=>fetch(`https://assignment-10-app-server-arifbiswas.vercel.app/courses/${params.id}`)
     }
 ])
