@@ -43,8 +43,8 @@ const AuthContext = ({children}) => {
         const unsubscribe =()=>{
             onAuthStateChanged(auth,currentUser=>{
                 setUser(currentUser);
+                console.log(currentUser);
                 setLoader(false);
-               
             })
         }
         return ()=>{
@@ -53,6 +53,7 @@ const AuthContext = ({children}) => {
     },[])
 
     const LogOut = () =>{
+        setLoader(true)
         return signOut(auth)
     }
     const userInfo = 

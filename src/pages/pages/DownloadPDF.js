@@ -35,7 +35,7 @@ const DownloadPDF = () => {
         <div className="grid gap-6 mb-6 grid-cols-3 ">
           <div>
             <label
-              for="first_name"
+              htmlFor="first_name"
               className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300"
             >
               Full Name
@@ -54,7 +54,7 @@ const DownloadPDF = () => {
           
           <div>
             <label
-              for="company"
+              htmlFor="company"
               className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300"
             >
               Previous Collage 
@@ -71,7 +71,7 @@ const DownloadPDF = () => {
           </div>
           <div>
             <label
-              for="phone"
+              htmlFor="phone"
               className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300"
             >
               Phone number
@@ -88,7 +88,7 @@ const DownloadPDF = () => {
           </div>
           <div>
             <label
-              for="ssc"
+              htmlFor="ssc"
               className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300"
             >
               SSC GPA
@@ -105,7 +105,7 @@ const DownloadPDF = () => {
           </div>
           <div>
             <label
-              for="hsc"
+              htmlFor="hsc"
               className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300"
             >
               HSC GPA
@@ -122,7 +122,7 @@ const DownloadPDF = () => {
           </div>
           <div>
             <label
-              for="visitors"
+              htmlFor="visitors"
               className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300"
             >
               Bkash Transaction Id 
@@ -140,7 +140,7 @@ const DownloadPDF = () => {
         </div>
         <div className="mb-6">
           <label
-            for="email"
+            htmlFor="email"
             className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300"
           >
             Email 

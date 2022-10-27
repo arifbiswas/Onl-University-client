@@ -49,7 +49,7 @@ const Admission = () => {
         <div className="grid gap-6 mb-6 md:grid-cols-1 ">
           <div>
             <label
-              for="first_name"
+              htmlFor="first_name"
               className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300"
             >
               Full Name
@@ -68,7 +68,7 @@ const Admission = () => {
           
           <div>
             <label
-              for="company"
+              htmlFor="company"
               className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300"
             >
               Previous Collage 
@@ -84,7 +84,7 @@ const Admission = () => {
           </div>
           <div>
             <label
-              for="phone"
+              htmlFor="phone"
               className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300"
             >
               Phone number
@@ -101,7 +101,7 @@ const Admission = () => {
           </div>
           <div>
             <label
-              for="ssc"
+              htmlFor="ssc"
               className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300"
             >
               SSC GPA
@@ -117,7 +117,7 @@ const Admission = () => {
           </div>
           <div>
             <label
-              for="hsc"
+              htmlFor="hsc"
               className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300"
             >
               HSC GPA
@@ -133,7 +133,7 @@ const Admission = () => {
           </div>
           <div>
             <label
-              for="visitors"
+              htmlFor="visitors"
               className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300"
             >
               Bkash Transaction Id 
@@ -150,7 +150,7 @@ const Admission = () => {
         </div>
         <div className="mb-6">
           <label
-            for="email"
+            htmlFor="email"
             className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300"
           >
             Email 
@@ -178,7 +178,7 @@ const Admission = () => {
           </div>
           <label
           onClick={()=>setdisable(!disable)}
-            for="remember"
+            htmlFor="remember"
             className="ml-2 text-sm font-medium text-gray-900 dark:text-gray-400"
           >
             I agree with the{" "}

@@ -164,7 +164,7 @@ const Header = () => {
                       <Tooltip content={user?.displayName ?user.displayName :'No Login'} placement="bottom">
                         <div className="overflow-hidden relative w-10 h-10 bg-gray-100 rounded-full dark:bg-gray-600">
                           <svg
-                            className="absolute -left-1 w-10 h-10 text-gray-400"
+                            className="absolute left-2 bottom-3 w-6 h-6 text-gray-400"
                             fill="currentColor"
                             viewBox="0 0 20 20"
                             xmlns="http://www.w3.org/2000/svg"

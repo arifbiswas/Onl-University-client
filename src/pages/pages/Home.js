@@ -12,13 +12,12 @@ const Home = () => {
             <h1 className="text-3xl font-extrabold sm:text-5xl">
               Let us find your
               <strong className="block font-extrabold text-rose-700">
-              Choice and grow up make life easy.
+              Choice and grow up make your life easy.
               </strong>
             </h1>
 
             <p className="mt-4 max-w-lg sm:text-xl sm:leading-relaxed">
-              Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nesciunt
-              illo tenetur fuga ducimus numquam ea!
+            Community colleges are designed to make college more accessible, yet 6 out of every 10 community college students cannot reap the full rewards of higher education because they do not earn their degree. For graduates, rewards often include making more money.
             </p>
 
             <div className="mt-8 flex flex-wrap gap-4 text-center">
