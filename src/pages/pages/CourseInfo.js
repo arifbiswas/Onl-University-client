@@ -9,7 +9,7 @@ const CourseInfo = () => {
   return (
     <div>
       <div className=" bg-white rounded-lg border border-gray-200 shadow-md dark:bg-gray-800 dark:border-gray-700">
-        <img className="rounded-lg w-[100%] h-[30vh] lg:w-[100%] lg:h-[70vh]" src={image} alt="" />
+        <img className="rounded-lg w-[90%] h-[30vh] lg:w-[100%] lg:h-[70vh]" src={image} alt="" />
 
         <div className="p-5">
           <h5 className="mb-5 text-4xl font-bold tracking-tight text-gray-900 dark:text-white">

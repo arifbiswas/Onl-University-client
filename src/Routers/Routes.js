@@ -13,6 +13,7 @@ import Login from "../pages/pages/Login";
 import Register from "../pages/pages/Register";
 import ErrorPage from "../pages/shearedPages/ErrorPage";
 import PrivateRoute from "./PrivateRoute";
+import AllCourses from "../pages/pages/AllCourses";
 
 const routes = createBrowserRouter([ 
     {
@@ -41,6 +42,11 @@ const routes = createBrowserRouter([
                 element:<Courses></Courses>,
                 loader: ()=>fetch('https://assignment-10-app-server-arifbiswas.vercel.app/courses'),
                 children:[
+                    {
+                        path:'/courses',
+                        element:<AllCourses></AllCourses>,
+                        loader: ({params})=>fetch(`https://assignment-10-app-server-arifbiswas.vercel.app/courses`)
+                    },
                     {
                         path:'/courses/:id',
                         element:<Course></Course>,

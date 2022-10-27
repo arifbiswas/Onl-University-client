@@ -1,4 +1,4 @@
-import { Sidebar } from "flowbite-react";
+
 import React from "react";
 import { Outlet, useLoaderData } from "react-router-dom";
 import SiteBar from "../pages/shearedPages/SiteBar";
@@ -8,7 +8,7 @@ const Courses = () => {
  
 
   return (
-    <div className="container lg:flex lg:gap-5 justify-center items-center mx-auto">
+    <div className="container lg:flex lg:gap-5 justify-center  mx-auto">
       <span>
         <SiteBar></SiteBar>
       </span>
