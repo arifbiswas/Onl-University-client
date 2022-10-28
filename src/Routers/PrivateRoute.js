@@ -7,7 +7,7 @@ import { AuthProvider } from "../Contexts/AuthContext";
 const PrivateRoute = ({ children }) => {
   const { user, loader } = useContext(AuthProvider);
   const location = useLocation();
-  
+ 
   if (loader) {
     return (
       <div className="text-center">
@@ -32,7 +32,10 @@ const PrivateRoute = ({ children }) => {
       </div>
     );
   }
-  return children;
+  if(user){
+    return children;
+  }
+  return <Navigate to='/login' state={{from:location}} replace></Navigate>
 };
 
 export default PrivateRoute;

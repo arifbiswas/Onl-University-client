@@ -4,7 +4,7 @@ import { NavLink, useLoaderData } from "react-router-dom";
 const Course = () => {
   const course = useLoaderData();
  
-  const { _id,name, image, description, courses_length, total_exam } = course;
+  const { courses_id,name, image, description, courses_length, total_exam } = course;
   return (
     <div>
       <div className=" bg-white rounded-lg border border-gray-200 shadow-md dark:bg-gray-800 dark:border-gray-700">
@@ -25,7 +25,7 @@ const Course = () => {
            {description}
           </p>
           <NavLink
-            to={`/course/${_id}`}
+            to={`/course/${courses_id}`}
             className="inline-flex justify-center shadow-lg w-full items-center py-5 px-5 my-2 text-1xl font-medium text-center text-white bg-rose-700 rounded-lg hover:bg-rose-800 focus:ring-4 focus:outline-none focus:ring-rose-300 dark:bg-rose-600 dark:hover:bg-rose-700 dark:focus:ring-rose-800 lg:mr-5"
          
           >
@@ -38,14 +38,14 @@ const Course = () => {
               xmlns="http://www.w3.org/2000/svg"
             >
               <path
-                fillRule="evenodd"
+                fill-rule="evenodd"
                 d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z"
-                clipRule="evenodd"
+                clip-rule="evenodd"
               ></path>
             </svg>
           </NavLink>
           <NavLink 
-            to={`/admission/${_id}`}
+            to={`/admission/${courses_id}`}
             className="inline-flex justify-center shadow-lg w-full items-center py-5 px-5 my-2 text-1xl font-medium text-center text-white bg-rose-700 rounded-lg hover:bg-rose-800 focus:ring-4 focus:outline-none focus:ring-rose-300 dark:bg-rose-600 dark:hover:bg-rose-700 dark:focus:ring-rose-800 lg:mr-5"
           >
             APPLICATION FORM
@@ -57,9 +57,9 @@ const Course = () => {
               xmlns="http://www.w3.org/2000/svg"
             >
               <path
-                fillRule="evenodd"
+                fill-rule="evenodd"
                 d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z"
-                clipRule="evenodd"
+                clip-rule="evenodd"
               ></path>
             </svg>
           </NavLink>

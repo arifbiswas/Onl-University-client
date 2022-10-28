@@ -4,8 +4,8 @@ import { FaBookOpen } from "react-icons/fa";
 import { useState } from "react";
 import { useContext } from "react";
 import { AuthProvider } from "../../Contexts/AuthContext";
-import ReactTooltip from 'react-tooltip';
-import { Button, Tooltip } from "flowbite-react";
+
+import {  Tooltip } from "flowbite-react";
 
 const Header = () => {
   const { user } = useContext(AuthProvider);
