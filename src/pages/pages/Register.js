@@ -4,7 +4,7 @@ import { NavLink, useNavigate } from "react-router-dom";
 import { AuthProvider } from "../../Contexts/AuthContext";
 
 const Register = () => {
-  const {createUserWithGmailPassword,userProfileUpdate} = useContext(AuthProvider);
+  const {createUserWithGmailPassword,userProfileUpdate,emailVerified} = useContext(AuthProvider);
   const [error,setError] = useState('');
   const navigate = useNavigate()
 
@@ -50,6 +50,7 @@ const Register = () => {
       handleUserProfileUpdate(name,photoURL)
       setError('')
       navigate('/')
+      handleEmailVerified()
     })
     .catch(e =>{console.error(e)
       setError(e.message)
@@ -66,6 +67,13 @@ const Register = () => {
     .catch(e=>{console.error(e)
       setError(e.message)
     })
+  }
+  const handleEmailVerified =()=>{
+    emailVerified()
+    .then(()=>{
+      navigate('/emailVerify')
+    })
+    .catch(e=>console.error(e))
   }
 
   return (

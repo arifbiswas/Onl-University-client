@@ -5,10 +5,13 @@ import { Navigate, useLocation } from "react-router-dom";
 import { AuthProvider } from "../Contexts/AuthContext";
 
 const PrivateRoute = ({ children }) => {
-  const { user,loader } = useContext(AuthProvider);
+  const { user,loader} = useContext(AuthProvider);
   const location = useLocation();
  
   if (loader) {
+    if(!user?.emailVerified){
+      return <Navigate to='/emailVerify' state={{from:location}} replace></Navigate>
+    }
     return (
       <div className="text-center">
         <div role="status">
@@ -35,7 +38,6 @@ const PrivateRoute = ({ children }) => {
   if(!user){
     return <Navigate to='/login' state={{from:location}} replace></Navigate>
   }
-  
   
   return children;
 };

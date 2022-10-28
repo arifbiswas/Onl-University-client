@@ -14,6 +14,7 @@ import Register from "../pages/pages/Register";
 import ErrorPage from "../pages/shearedPages/ErrorPage";
 import PrivateRoute from "./PrivateRoute";
 import AllCourses from "../pages/pages/AllCourses";
+import EmailVerifiedPage from "../pages/pages/EmailVerifiedPage";
 
 const routes = createBrowserRouter([ 
     {
@@ -79,6 +80,10 @@ const routes = createBrowserRouter([
         path:'/pdf/:id',
         element:<DownloadPDF></DownloadPDF>,
         loader: ({params})=>fetch(`https://assignment-10-app-server-arifbiswas.vercel.app/courses/${params.id}`)
+    },
+    {
+        path:'/emailVerify',
+        element:<EmailVerifiedPage></EmailVerifiedPage>
     }
 ])
 

@@ -1,5 +1,5 @@
 import React from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import { FaBookOpen } from "react-icons/fa";
 import { useState } from "react";
 import { useContext } from "react";
@@ -9,6 +9,14 @@ import {  Tooltip } from "flowbite-react";
 
 const Header = () => {
   const { user ,LogOut} = useContext(AuthProvider);
+  const navigate = useNavigate()
+  const handleLogOut =()=>{
+    LogOut()
+    .then(()=>{
+      navigate('/login')
+    })
+    .catch(e=>console.error(e))
+  }
 
   const [open, setOpen] = useState(false);
   const handleDarkMod = () => {
@@ -110,7 +118,7 @@ const Header = () => {
                 {user?.uid ? (
                   <li>
                    
-                    <button onClick={LogOut} className="hover:text-rose-800  text-rose-600 font-bold">
+                    <button onClick={handleLogOut} className="hover:text-rose-800  text-rose-600 font-bold">
                       Log Out
                     </button>
                   </li>
