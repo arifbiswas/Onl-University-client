@@ -32,10 +32,6 @@ const Admission = () => {
       navigate(`/pdf/${courses_id}`)
     }
 
-    // const handlNavigate =()=>{
-    //   return <Navigate to='/lol'></Navigate>
-    // }
-
   return (
     <div className="container mx-auto mb-8" >
      <div className="text-center my-2">
@@ -182,18 +178,17 @@ const Admission = () => {
             className="ml-2 text-sm font-medium text-gray-900 dark:text-gray-400"
           >
             I agree with the{" "}
-            <a
-              
+            <span
+            
               className="text-rose-600 hover:underline dark:text-rose-500"
             >
               terms and conditions
-            </a>
+            </span>
             .
           </label>
         </div>
        
        <button
-          // onClick={handlNavigate}
           type="submit"
           className="text-white bg-rose-700 hover:bg-rose-800  font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center "
           disabled={disable}

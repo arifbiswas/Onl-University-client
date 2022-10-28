@@ -8,7 +8,7 @@ const AllCourses = () => {
     return (
         <div>
             {
-                allCourses.map(course=> <AllCoursesInfo key={course._id}
+                allCourses.map(course=> <AllCoursesInfo key={course.courses_id}
                     course={course}
                 ></AllCoursesInfo>)
             }
