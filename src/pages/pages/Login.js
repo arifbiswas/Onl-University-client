@@ -16,7 +16,7 @@ const Login = () => {
   
   const from = location.state?.from?.pathname || '/';
 
-  const { createUserWithGoogle, createUserWithGitHub ,loginUser} =
+  const { createUserWithGoogle, createUserWithGitHub ,loginUser,setUser} =
     useContext(AuthProvider);
 
   const handleGoogleLogin = () => {
@@ -24,6 +24,7 @@ const Login = () => {
       .then((result) => {
         const user = result.user;
         console.log(user);
+        setUser(user)
       
         setError('')
         navigate(from,{replace:true})
@@ -39,6 +40,7 @@ const Login = () => {
         const user = result.user;
         console.log(user);
         setError('')
+        setUser(user)
         navigate(from,{replace:true})
       })
       .catch((e) => {
@@ -59,6 +61,7 @@ const Login = () => {
     .then(result =>{
       const user = result.user;
       console.log(user);
+      setUser(user)
       
       form.reset();
       setError('')

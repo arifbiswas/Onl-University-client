@@ -10,7 +10,7 @@ export const AuthProvider = createContext();
 
 const AuthContext = ({children}) => {
     const [user,setUser] = useState();
-    const [loader ,setLoader] = useState(true)
+    // const [loader ,setLoader] = useState(true)
 
     
     const createUserWithGoogle = (provider) =>{
@@ -43,14 +43,14 @@ const AuthContext = ({children}) => {
         const unsubscribe =()=>{
             onAuthStateChanged(auth,currentUser=>{
                 setUser(currentUser);
-                console.log(currentUser);
-                setLoader(false);
+                console.log('auth set user',currentUser);
+                // setLoader(false);
             })
         }
         return ()=>{
             unsubscribe()
         }
-    },[user])
+    },[])
 
     const LogOut = () =>{
        
@@ -65,7 +65,8 @@ const AuthContext = ({children}) => {
         createUserWithGmailPassword,
         userProfileUpdate,
         loginUser,
-        loader
+        setUser,
+        // loader
     }
     return (
         <AuthProvider.Provider value={userInfo}>
