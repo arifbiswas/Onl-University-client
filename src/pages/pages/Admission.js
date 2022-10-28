@@ -103,7 +103,7 @@ const Admission = () => {
               SSC GPA
             </label>
             <input
-              type="number"
+              type="text"
               id="ssc"
               name="ssc"
               className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-rose-500 focus:border-rose-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-rose-500 dark:focus:border-rose-500"
@@ -119,18 +119,19 @@ const Admission = () => {
               HSC GPA
             </label>
             <input
-              type="number"
+              type="text"
               id="hsc"
               name="hsc"
               className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-rose-500 focus:border-rose-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-rose-500 dark:focus:border-rose-500"
               placeholder="5.00 GPA"
+            
               required
             />
           </div>
           <div>
             <label
               htmlFor="visitors"
-              className="block mb-2 text-sm font-medium text-gray-900 text-rose-800"
+              className="block mb-2 text-sm font-medium  text-rose-800"
             >
              'Admission fee' Bkash Transaction Id 
              <p className="text-green-400">Send this number '01871063074' and give transaction id</p>

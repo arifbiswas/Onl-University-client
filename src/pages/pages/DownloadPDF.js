@@ -1,13 +1,13 @@
 import React from 'react';
 import { useContext } from 'react';
-import { useLoaderData, useNavigate } from 'react-router-dom';
+import { useLoaderData} from 'react-router-dom';
 import { AuthProvider } from '../../Contexts/AuthContext';
 
 const DownloadPDF = () => {
     
     const course = useLoaderData();
   
-    const { name, courses_length ,courses_id} =
+    const { name, courses_length} =
       course;
     const {user} = useContext(AuthProvider);
     
