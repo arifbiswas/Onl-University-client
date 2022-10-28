@@ -14,28 +14,28 @@ const AuthContext = ({children}) => {
 
     
     const createUserWithGoogle = (provider) =>{
-        setLoader(true)
+      
         return signInWithPopup(auth,provider)
     }
 
     const createUserWithGitHub =(provider)=>{
-        setLoader(true)
+        
         return signInWithPopup(auth,provider)
     }
 
     const createUserWithGmailPassword = (email,password)=>{
-        setLoader(true)
+        
       return createUserWithEmailAndPassword(auth,email,password)
        
     }
 
     const userProfileUpdate = (updateInfo) => {
-        setLoader(true)
+        
         return updateProfile(auth.currentUser,updateInfo)
     }
 
     const loginUser =(email,password)=>{
-        setLoader(true)
+       
         return signInWithEmailAndPassword(auth,email,password)
     }
 
@@ -50,10 +50,10 @@ const AuthContext = ({children}) => {
         return ()=>{
             unsubscribe()
         }
-    },[])
+    },[user])
 
     const LogOut = () =>{
-        setLoader(true)
+       
         return signOut(auth)
     }
     const userInfo = 

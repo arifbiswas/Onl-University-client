@@ -1,6 +1,5 @@
 import React from "react";
-import { NavLink, useLoaderData } from "react-router-dom";
-import AllCourses from "./AllCourses";
+import { NavLink } from "react-router-dom";
 
 const AllCoursesInfo = ({course}) => {
 //  console.log(course);

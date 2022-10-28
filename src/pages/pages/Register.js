@@ -21,7 +21,7 @@ const Register = () => {
       setError('should contain at least one digit')
       return
     }
-    if(!/(?=.*?[!@#\$&*~])/.test(password)){
+    if(!/(?=.*?[!@#$&*~])/.test(password)){
       
       setError('should contain at least one Special character')
       return
@@ -44,6 +44,7 @@ const Register = () => {
     createUserWithGmailPassword(email,password)
     .then(r =>{
       const user = r.user;
+      console.log(user);
      
       form.reset();
       handleUserProfileUpdate(name,photoURL)

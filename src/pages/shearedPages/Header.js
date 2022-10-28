@@ -28,7 +28,7 @@ const Header = () => {
               <span className="text-2xl mr-2 font-black text-rose-700">
                 <FaBookOpen></FaBookOpen>
               </span>
-              <span className="self-center text-xl font-semibold whitespace-nowrap font-black text-rose-700">
+              <span className="self-center text-xl whitespace-nowrap font-black text-rose-700">
                 OnL University
               </span>
             </NavLink>

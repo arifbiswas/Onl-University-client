@@ -23,6 +23,7 @@ const Login = () => {
     createUserWithGoogle(googleProvider)
       .then((result) => {
         const user = result.user;
+        console.log(user);
       
         setError('')
         navigate(from,{replace:true})
@@ -36,7 +37,7 @@ const Login = () => {
     createUserWithGitHub(gitHubProvider)
       .then((result) => {
         const user = result.user;
-       
+        console.log(user);
         setError('')
         navigate(from,{replace:true})
       })
@@ -57,6 +58,7 @@ const Login = () => {
     loginUser(email,password)
     .then(result =>{
       const user = result.user;
+      console.log(user);
       
       form.reset();
       setError('')
