@@ -17,7 +17,7 @@ const Home = () => {
             </h1>
 
             <p className="mt-4 max-w-lg sm:text-xl sm:leading-relaxed">
-            Community colleges are designed to make college more accessible, yet 6 out of every 10 community college students cannot reap the full rewards of higher education because they do not earn their degree. For graduates, rewards often include making more money.
+            Engineering is an exciting subject because it combines scientific and mathematical knowledge with creative thinking. It teaches you to question the established ways of doing things and to come up with new ideas. In order to do this, you need creativity and an ability to look beyond what has been done before.
             </p>
 
             <div className="mt-8 flex flex-wrap gap-4 text-center">
@@ -29,10 +29,10 @@ const Home = () => {
               </NavLink>
 
               <NavLink
-                to="/faq"
+                to="/blog"
                 className="block w-full rounded bg-white px-12 py-3 text-sm font-medium text-rose-600 shadow hover:text-rose-700 focus:outline-none focus:ring active:text-rose-500 sm:w-auto"
               >
-                FAQ
+                Blog
               </NavLink>
             </div>
           </div>

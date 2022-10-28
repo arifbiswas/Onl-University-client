@@ -9,7 +9,7 @@ const AllCoursesInfo = ({course}) => {
       <div className=" bg-white rounded-lg border border-gray-200 shadow-md dark:bg-gray-800 dark:border-gray-700">
         
           <img
-            className="rounded-lg w-[100%] h-[70vh]"
+            className="rounded-lg w-[100%] h-[60vh]"
             src={image}
             alt=""
           />
@@ -21,7 +21,7 @@ const AllCoursesInfo = ({course}) => {
             </h5>
           
           <p className="mb-3 font-normal text-gray-700 dark:text-gray-400">
-           {description.slice(0,150)}
+           {description.slice(0,150) + '...'}
           </p>
           <NavLink
             to={`/course/${courses_id}`}

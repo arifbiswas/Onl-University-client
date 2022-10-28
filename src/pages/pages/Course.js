@@ -22,7 +22,7 @@ const Course = () => {
             </h5>
           
           <p className="mb-3 font-normal text-gray-700 dark:text-gray-400">
-           {description}
+           {description.slice(0,150) +'...'}
           </p>
           <NavLink
             to={`/course/${courses_id}`}
