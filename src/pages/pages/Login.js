@@ -24,7 +24,7 @@ const Login = () => {
       .then((result) => {
         const user = result.user;
         console.log(user);
-        setUser(user)
+        // setUser(user)
       
         setError('')
         navigate(from,{replace:true})
@@ -40,7 +40,7 @@ const Login = () => {
         const user = result.user;
         console.log(user);
         setError('')
-        setUser(user)
+        // setUser(user)
         navigate(from,{replace:true})
       })
       .catch((e) => {
@@ -61,7 +61,7 @@ const Login = () => {
     .then(result =>{
       const user = result.user;
       console.log(user);
-      setUser(user)
+      // setUser(user)
       
       form.reset();
       setError('')

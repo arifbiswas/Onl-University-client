@@ -10,50 +10,50 @@ export const AuthProvider = createContext();
 
 const AuthContext = ({children}) => {
     const [user,setUser] = useState();
-    // const [loader ,setLoader] = useState(true)
+    const [loader ,setLoader] = useState(true)
 
     
     const createUserWithGoogle = (provider) =>{
-      
+      setLoader(true)
         return signInWithPopup(auth,provider)
     }
 
     const createUserWithGitHub =(provider)=>{
-        
+        setLoader(true)
         return signInWithPopup(auth,provider)
     }
 
     const createUserWithGmailPassword = (email,password)=>{
-        
+        setLoader(true)
       return createUserWithEmailAndPassword(auth,email,password)
        
     }
 
     const userProfileUpdate = (updateInfo) => {
-        
+        setLoader(true)
         return updateProfile(auth.currentUser,updateInfo)
     }
 
     const loginUser =(email,password)=>{
-       
+        setLoader(true)
         return signInWithEmailAndPassword(auth,email,password)
     }
 
     useEffect(()=>{
-        const unsubscribe =()=>{
-            onAuthStateChanged(auth,currentUser=>{
+        const unsubscribe = onAuthStateChanged(auth,currentUser=>{
                 setUser(currentUser);
                 console.log('auth set user',currentUser);
-                // setLoader(false);
+                setLoader(false);
             })
-        }
+            
+        
         return ()=>{
             unsubscribe()
         }
     },[])
 
     const LogOut = () =>{
-       
+        setLoader(true)
         return signOut(auth)
     }
     const userInfo = 
@@ -66,7 +66,7 @@ const AuthContext = ({children}) => {
         userProfileUpdate,
         loginUser,
         setUser,
-        // loader
+        loader,
     }
     return (
         <AuthProvider.Provider value={userInfo}>

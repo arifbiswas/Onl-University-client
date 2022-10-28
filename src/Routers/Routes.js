@@ -77,7 +77,7 @@ const routes = createBrowserRouter([
     },
     {
         path:'/pdf/:id',
-        element:<PrivateRoute><DownloadPDF></DownloadPDF></PrivateRoute>,
+        element:<DownloadPDF></DownloadPDF>,
         loader: ({params})=>fetch(`https://assignment-10-app-server-arifbiswas.vercel.app/courses/${params.id}`)
     }
 ])

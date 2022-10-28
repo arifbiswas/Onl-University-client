@@ -11,7 +11,8 @@ const DownloadPDF = () => {
       course;
     const {user} = useContext(AuthProvider);
     
-    const pdf = () =>{
+    const pdf = (e) =>{
+      e.preventDefault();
         window.print()
     }
 
@@ -155,7 +156,7 @@ const DownloadPDF = () => {
             disabled />
         </div>
         <div className='text-center'>
-        <button onClick={pdf} className="text-white bg-rose-700 hover:bg-rose-800  font-medium rounded-lg text-sm w-full sm:w-auto px-16 py-5 text-center ">Print PDF</button>
+        <button onClick={pdf} className="text-white bg-rose-700 hover:bg-rose-800  font-medium rounded-lg text-sm w-full sm:w-auto px-16 py-5 text-center ">Download Print PDF</button>
         </div>
       </form>
       

@@ -130,9 +130,10 @@ const Admission = () => {
           <div>
             <label
               htmlFor="visitors"
-              className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300"
+              className="block mb-2 text-sm font-medium text-gray-900 text-rose-800"
             >
-              Bkash Transaction Id 
+             'Admission fee' Bkash Transaction Id 
+             <p className="text-green-400">Send this number '01871063074' and give transaction id</p>
             </label>
             <input
               type="text"
