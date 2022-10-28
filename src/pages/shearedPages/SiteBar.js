@@ -17,11 +17,10 @@ const SiteBar = () => {
       <aside className="w-64 border" aria-label="Sidebar">
         <div className="overflow-y-auto py-4 px-3 bg-gray-50 rounded dark:bg-gray-800">
           <ul className="space-y-2">
-            <li className="text-center text-2xl mb-5 font-bold">
-              Courses List
-            </li>
-            <li className="text-center pb-2 border">
-              <Link to='/courses'>All Courses</Link>
+            <li className="text-center text-rose-600 text-2xl mb-5 font-bold">
+              <NavLink defaultChecked={true} to='/courses'
+              
+              >All Courses</NavLink>
             </li>
             
                 {

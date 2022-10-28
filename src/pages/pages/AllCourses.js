@@ -6,7 +6,7 @@ const AllCourses = () => {
     const allCourses = useLoaderData();
     // console.log(allCourses);
     return (
-        <div>
+        <div className='grid  lg:grid-cols-2 gap-5 '>
             {
                 allCourses.map(course=> <AllCoursesInfo key={course.courses_id}
                     course={course}
